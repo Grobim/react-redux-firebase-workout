@@ -1,5 +1,7 @@
 :global {
   @import 'base';
+  @import 'vendor/bootstrap/stylesheets/bootstrap-sprockets';
+  @import 'vendor/bootstrap/stylesheets/bootstrap';
   @import 'vendor/normalize';
 
   // Some best-practice CSS that's useful for most apps
