@@ -6,7 +6,7 @@ import {
   createStore
 } from 'redux';
 
-export default function configureStore (initialState) {
+const configureStore = (initialState) => {
   let createStoreWithMiddleware;
   const middleware = applyMiddleware(thunk);
 
@@ -32,4 +32,6 @@ export default function configureStore (initialState) {
     });
   }
   return store;
-}
+};
+
+export default configureStore;

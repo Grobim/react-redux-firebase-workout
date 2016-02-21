@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import DevTools from '../../containers/DevToolsWindow';
 
-export default function createDevToolsWindow (store) {
+const createDevToolsWindow = (store) => {
   const win = window.open(
     null,
     'redux-devtools', // give it a name so it reuses the same window
@@ -27,4 +27,6 @@ export default function createDevToolsWindow (store) {
       , win.document.getElementById('react-devtools-root')
     );
   }, 10);
-}
+};
+
+export default createDevToolsWindow;

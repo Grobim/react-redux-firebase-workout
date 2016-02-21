@@ -11,7 +11,7 @@ import 'styles/core.scss';
 //
 // CoreLayout is a pure function of its props, so we can
 // define it with a plain javascript function...
-function CoreLayout ({ children }) {
+const CoreLayout = ({ children }) => {
   return (
     <div className='page-container'>
       <div className='view-container'>
@@ -19,7 +19,7 @@ function CoreLayout ({ children }) {
       </div>
     </div>
   );
-}
+};
 
 CoreLayout.propTypes = {
   children : PropTypes.element

@@ -2,23 +2,23 @@ import React from 'react';
 import TestUtils from 'react-addons-test-utils';
 import CoreLayout from 'layouts/CoreLayout/CoreLayout';
 
-function shallowRender (component) {
+const shallowRender = (component) => {
   const renderer = TestUtils.createRenderer();
 
   renderer.render(component);
   return renderer.getRenderOutput();
-}
+};
 
-function shallowRenderWithProps (props = {}) {
+const shallowRenderWithProps = (props = {}) => {
   return shallowRender(<CoreLayout {...props} />);
-}
+};
 
-describe('(Layout) Core', function () {
+describe('(Layout) Core', () => {
   let _component;
   let _props;
   let _child;
 
-  beforeEach(function () {
+  beforeEach(() => {
     _child = <h1 className='child'>Child</h1>;
     _props = {
       children : _child
@@ -27,7 +27,7 @@ describe('(Layout) Core', function () {
     _component = shallowRenderWithProps(_props);
   });
 
-  it('Should render as a <div>.', function () {
+  it('Should render as a <div>.', () => {
     expect(_component.type).to.equal('div');
   });
 });
