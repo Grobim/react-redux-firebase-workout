@@ -4,6 +4,7 @@ import HtmlWebpackPlugin from 'html-webpack-plugin';
 import ExtractTextPlugin from 'extract-text-webpack-plugin';
 import config from '../config';
 import _debug from 'debug';
+import path from 'path';
 
 const debug = _debug('app:webpack:config');
 const paths = config.utils_paths;
@@ -132,34 +133,45 @@ const cssLoader = !config.compiler_css_modules
 
 webpackConfig.module.loaders.push({
   test    : /\.scss$/,
-  include : /src/,
+  include : pathStr => pathStr.startsWith(paths.client()),
+  exclude : pathStr => pathStr.startsWith(paths.client(path.normalize('styles/global'))),
   loaders : [
     'style',
     cssLoader,
     'postcss',
-    'sass'
+    'sass?sourceMap'
   ]
 });
 
-// Don't treat global SCSS as modules
-webpackConfig.module.loaders.push({
-  test    : /\.scss$/,
-  exclude : /src/,
-  loaders : [
-    'style',
-    'css?sourceMap',
-    'postcss',
-    'sass'
-  ]
-});
-
-// Don't treat global, third-party CSS as modules
 webpackConfig.module.loaders.push({
   test    : /\.css$/,
-  exclude : /src/,
+  include : pathStr => pathStr.startsWith(paths.client()),
+  exclude : pathStr => pathStr.startsWith(paths.client(path.normalize('styles/global'))),
   loaders : [
     'style',
-    'css?sourceMap',
+    cssLoader,
+    'postcss'
+  ]
+});
+
+// All other CSS/SCSS is global by default
+webpackConfig.module.loaders.push({
+  test    : /\.scss$/,
+  exclude : pathStr => pathStr.startsWith(paths.client()) && !pathStr.startsWith(paths.client(path.normalize('styles/global'))),
+  loaders : [
+    'style',
+    'css?sourceMap&-minimize',
+    'postcss',
+    'sass?sourceMap'
+  ]
+});
+
+webpackConfig.module.loaders.push({
+  test    : /\.css$/,
+  exclude : pathStr => pathStr.startsWith(paths.client()) && !pathStr.startsWith(paths.client(path.normalize('styles/global'))),
+  loaders : [
+    'style',
+    'css?sourceMap&-minimize',
     'postcss'
   ]
 });
