@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 
-import { actions as cardListActions } from 'redux/modules/board/cardList';
+import { actions as cardListActions } from 'redux/modules/board/cardLists';
 
 import AddCardList from 'components/AddCardList/AddCardList';
 

@@ -1,26 +1,11 @@
-import React, { PropTypes } from 'react';
-import { connect } from 'react-redux';
+import React from 'react';
 
 import Board from 'components/Board/Board';
 
-const mapStateToProps = ({
-  board
-}) => ({
-  cardLists : board.cardLists
-});
-export class BoardContainer extends React.Component {
-  static propTypes = {
-    cardLists : PropTypes.array.isRequired
-  };
-
+export default class BoardContainer extends React.Component {
   render () {
-    const {
-      cardLists
-    } = this.props;
     return (
-      <Board cardLists={cardLists} />
+      <Board />
     );
   }
 }
-
-export default connect(mapStateToProps, null)(BoardContainer);

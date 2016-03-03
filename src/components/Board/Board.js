@@ -1,21 +1,11 @@
-import React, { PropTypes } from 'react';
+import React from 'react';
 import classes from './Board.scss';
 
 import BoardNameContainer from 'containers/Board/BoardNameContainer';
-
-import AddCardListContainer from 'containers/AddCardList/AddCardListContainer';
-import CardList from 'components/CardList/CardList';
+import CardListsContainer from 'containers/CardLists/CardListsContainer';
 
 export default class Board extends React.Component {
-  static propTypes = {
-    cardLists : PropTypes.array.isRequired
-  };
-
   render () {
-    const {
-      cardLists
-    } = this.props;
-
     return (
       <div className='row'>
         <div className='row'>
@@ -24,10 +14,7 @@ export default class Board extends React.Component {
           </div>
         </div>
         <div className={classes['row-fluid'] + ' row'}>
-          {cardLists.map(cardList =>
-            <CardList key={cardList.id} cardList={cardList} />
-          )}
-          <AddCardListContainer />
+          <CardListsContainer />
         </div>
       </div>
     );
