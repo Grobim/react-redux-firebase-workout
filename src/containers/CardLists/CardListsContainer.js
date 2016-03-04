@@ -3,8 +3,7 @@ import { connect } from 'react-redux';
 
 import { syncCardLists } from 'redux/modules/board/cardLists';
 
-import AddCardListContainer from 'containers/AddCardList/AddCardListContainer';
-import CardListContainer from 'containers/CardList/CardListContainer';
+import CardLists from 'components/CardLists/CardLists';
 
 const mapStateToProps = ({
   board
@@ -40,23 +39,8 @@ export class CardListsContainer extends React.Component {
     const {
       isSync
     } = this.props;
-    return (
-      <div>
-        {this.orderedCardList.map((cardList) =>
-          <CardListContainer key={cardList.id} cardList={cardList} />
-        )}
-        {
-          (() => {
-            if (isSync) {
-              return <AddCardListContainer />;
-            } else {
-              return <h2>Loading cardList ...</h2>;
-            }
-          })()
-        }
-      </div>
-    );
+    return <CardLists cardLists={this.orderedCardList} isSync={isSync} />;
   }
 }
 
-export default connect(mapStateToProps, {syncCardLists})(CardListsContainer);
+export default connect(mapStateToProps, { syncCardLists })(CardListsContainer);
