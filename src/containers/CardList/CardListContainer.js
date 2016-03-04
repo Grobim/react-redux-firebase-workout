@@ -22,7 +22,10 @@ export class CardListContainer extends React.Component {
       cardLists
     } = this.props;
 
-    return cardLists.filter((list) => cardList !== list).map((cardList) => cardList.order);
+    return cardLists
+      .filter((list) => cardList !== list)
+      .map((cardList) => cardList.order)
+      .sort((order1, order2) => order1 < order2 ? -1 : 1);
   }
 
   render () {
