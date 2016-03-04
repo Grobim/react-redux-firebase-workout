@@ -69,11 +69,11 @@ export const moveCardList = (cardList, newPos) => {
   return (dispatch, getState) => {
     var list = getState().board.cardLists.list;
     if (cardList.order < newPos) {
-      list.filter(({ id, order }) => id !== cardList.id && order <= newPos).forEach(({ id, order }) => {
+      list.filter(({ id, order }) => order > cardList.order && order <= newPos).forEach(({ id, order }) => {
         CardListRef.child(id).setPriority(order - 1);
       });
     } else if (cardList.order > newPos) {
-      list.filter(({ id, order }) => id !== cardList.id && order >= newPos).forEach(({ id, order }) => {
+      list.filter(({ id, order }) => order < cardList.order && order >= newPos).forEach(({ id, order }) => {
         CardListRef.child(id).setPriority(order + 1);
       });
     }
