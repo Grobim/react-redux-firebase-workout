@@ -43,9 +43,12 @@ export const syncCardLists = () => {
     });
     CardListRef.on('child_removed', (childSnap) => {
       dispatch(deletedCardList(childSnap.key()));
-      getState().board.cardLists.list.filter((cardList) => cardList.order > childSnap.getPriority()).forEach((cardList) => {
-        CardListRef.child(cardList.id).setPriority(cardList.order - 1);
-      });
+      getState().board.cardLists.list
+        .filter((cardList) => cardList.order > childSnap.getPriority())
+        .forEach((cardList) => {
+          CardListRef.child(cardList.id).setPriority(cardList.order - 1);
+        })
+      ;
     });
   };
 };
