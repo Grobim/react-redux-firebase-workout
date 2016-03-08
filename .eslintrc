@@ -4,6 +4,12 @@
     "standard",
     "standard-react"
   ],
+  "parserOptions": {
+    "ecmaFeatures": {
+      "experimentalObjectRestSpread": true,
+      "jsx": true
+    }
+  },
   "env"     : {
     "browser" : true
   },
@@ -17,7 +23,7 @@
   "rules": {
     "semi": [2, "always"],
     "key-spacing": [
-      2,
+      0,
       {
         "align": "colon",
         "beforeColon": true,
