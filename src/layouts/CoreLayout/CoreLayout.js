@@ -4,10 +4,8 @@ import 'styles/core.scss';
 
 const CoreLayout = ({ children }) => {
   return (
-    <div className='page-container'>
-      <div className='view-container'>
-        {children}
-      </div>
+    <div>
+      {children}
     </div>
   );
 };
