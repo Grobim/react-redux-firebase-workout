@@ -29,6 +29,7 @@
         "beforeColon": true,
         "afterColon": true
       }
-    ]
+    ],
+    "react/prop-types": 1
   }
 }
