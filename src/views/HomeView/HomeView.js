@@ -10,7 +10,7 @@ export class HomeView extends React.Component {
           <h2><span className={classes['dat-class']}>Hello world !</span></h2>
         </div>
         <hr />
-        <Link to='/404'>Go to 404 Page</Link>
+        <Link to='/todos'>Go to todo list</Link>
       </div>
     );
   }
