@@ -1,13 +1,16 @@
 import React from 'react';
 import { Link } from 'react-router';
-import classes from './HomeView.scss';
+
+import NameContainer from 'containers/Chat/NameContainer';
+import ChatContainer from 'containers/Chat/ChatContainer';
 
 export class HomeView extends React.Component {
   render () {
     return (
       <div className='container text-center'>
         <div className='row'>
-          <h2><span className={classes['dat-class']}>Hello world !</span></h2>
+          <NameContainer />
+          <ChatContainer />
         </div>
         <hr />
         <Link to='/404'>Go to 404 Page</Link>
